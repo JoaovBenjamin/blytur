@@ -1,0 +1,40 @@
+package com.example.blytur.view;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.example.blytur.chat.ChatService;
+import com.example.blytur.domain.MatriculaService;
+import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.tabs.TabSheet;
+import com.vaadin.flow.router.Route;
+
+@Route("")
+@Component
+public class HomeView extends VerticalLayout {
+
+    @Autowired
+    MatriculaService matriculaService1;
+    @Autowired
+    ChatService chatService1;
+
+    public HomeView(MatriculaService matriculaService, ChatService chatService) {
+
+        add(new H1("Assistente Blyúr"));
+
+        TabSheet tabSheet = new TabSheet();
+        tabSheet.add("Chat", new ChatView(chatService));
+        tabSheet.add("Matrículas", new TableView(matriculaService));
+
+        tabSheet.setHeightFull();
+        tabSheet.setWidthFull();
+
+        setHeightFull();
+        setWidthFull();
+
+
+        add(tabSheet);
+        this.chatService1 = chatService;
+        this.matriculaService1 = matriculaService;
+    }
+}
