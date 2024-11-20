@@ -20,8 +20,13 @@ public class ChatService {
                                     Antes de fornecer informações sobre matrícula ou trancar matrícula, confirme o nome do cliente.
                                     Só forneça essas informações se o nome corresponder.
                                     Você tambem pode mostrar nossas turbinas que trabalhamos com versões de casa, apartamento e escritorio
-                                """)
-                .defaultFunctions("findMatricula", "closeMatricula", "createMatricula", "findTurbina")
+                                    Você pode criar turbinas para clientes com matriculas ativas
+                        """)
+                .defaultFunctions(
+                    "findMatricula", 
+                    "closeMatricula", 
+                    "createMatricula", 
+                    "findTurbina")
                 .defaultAdvisors(new MessageChatMemoryAdvisor(new InMemoryChatMemory()))
                 .build();
     }

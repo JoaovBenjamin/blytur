@@ -20,4 +20,13 @@ public class TurbinaService {
         }
         return turbinaRepository.findByVersao(version);
     }
+
+    public Turbina createTurbina(String versao, String capacidade){
+        var turbina = Turbina.builder()
+                                    .capacidade(capacidade)
+                                    .versao(versao)
+                                    .build();
+
+        return turbinaRepository.save(turbina);
+    }
 }

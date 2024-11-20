@@ -12,6 +12,7 @@ import com.example.blytur.domain.matricula.MatriculaForm;
 import com.example.blytur.domain.matricula.MatriculaRequest;
 import com.example.blytur.domain.matricula.MatriculaService;
 import com.example.blytur.domain.turbina.Turbina;
+import com.example.blytur.domain.turbina.TurbinaForm;
 import com.example.blytur.domain.turbina.TurbinaRequest;
 import com.example.blytur.domain.turbina.TurbinaService;
 
@@ -46,4 +47,11 @@ public class ChatTools {
     public Function<TurbinaRequest, Turbina> findTurbina() {
         return request -> turbinaService.findTurbina(request.capacidade(), request.versao());
     }
+  
+    @Bean
+    @Description("Cria turbina para o cliente")
+    public Function<TurbinaForm, Turbina> createTurbina() {
+        return request -> turbinaService.createTurbina(request.capacidade(), request.versao());
+    }
+  
 }

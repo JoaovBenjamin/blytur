@@ -24,7 +24,7 @@ public class HomeView extends VerticalLayout {
 
     public HomeView(MatriculaService matriculaService, ChatService chatService, TurbinaService turbinaService) {
 
-        add(new H1("Assistente Blyúr"));
+        add(new H1("Assistente Blytúr"));
 
         TabSheet tabSheet = new TabSheet();
         tabSheet.add("Chat", new ChatView(chatService));

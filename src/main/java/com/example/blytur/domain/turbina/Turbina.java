@@ -22,8 +22,7 @@ public class Turbina {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    @Enumerated(EnumType.STRING)
-    TurbinaEnum versao;
+    String versao;
     String capacidade;
 
 }
