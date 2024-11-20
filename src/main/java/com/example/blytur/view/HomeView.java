@@ -1,9 +1,11 @@
 package com.example.blytur.view;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.example.blytur.chat.ChatService;
-import com.example.blytur.domain.MatriculaService;
+import com.example.blytur.domain.matricula.MatriculaService;
+import com.example.blytur.domain.turbina.TurbinaService;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.tabs.TabSheet;
@@ -17,14 +19,17 @@ public class HomeView extends VerticalLayout {
     MatriculaService matriculaService1;
     @Autowired
     ChatService chatService1;
+    @Autowired
+    TurbinaService turbinaService1;
 
-    public HomeView(MatriculaService matriculaService, ChatService chatService) {
+    public HomeView(MatriculaService matriculaService, ChatService chatService, TurbinaService turbinaService) {
 
         add(new H1("Assistente Blyúr"));
 
         TabSheet tabSheet = new TabSheet();
         tabSheet.add("Chat", new ChatView(chatService));
         tabSheet.add("Matrículas", new TableView(matriculaService));
+        tabSheet.add("Turbina", new TurbinaView(turbinaService));
 
         tabSheet.setHeightFull();
         tabSheet.setWidthFull();
@@ -32,9 +37,9 @@ public class HomeView extends VerticalLayout {
         setHeightFull();
         setWidthFull();
 
-
         add(tabSheet);
         this.chatService1 = chatService;
         this.matriculaService1 = matriculaService;
+        this.turbinaService1 = turbinaService;
     }
 }

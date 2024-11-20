@@ -1,4 +1,4 @@
-package com.example.blytur.domain;
+package com.example.blytur.domain.matricula;
 
 public enum StatusMatricula {
     ATIVA,
