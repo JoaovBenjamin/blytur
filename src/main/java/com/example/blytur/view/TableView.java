@@ -18,7 +18,7 @@ public class TableView extends VerticalLayout {
 
     public TableView(MatriculaService matriculaService) {
 
-        grid.setColumns("id", "name", "status");
+        grid.setColumns("id", "name", "status", "turbina");
         grid.setEmptyStateText("nenhuma matrícula cadastrada atualmente");
         grid.setItems(matriculaService.findAll());
 

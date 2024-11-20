@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.blytur.domain.turbina.Turbina;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Service
@@ -39,9 +41,10 @@ public class MatriculaService {
         return matriculaRepositoy.save(matricula);
     }
 
-    public Matricula createMatricula(String name, String cpf) {
+    public Matricula createMatricula(String name, String cpf, Turbina turbina) {
         var matricula = Matricula.builder()
                 .cpf(cpf)
+                .turbina(turbina)
                 .name(name)
                 .status(StatusMatricula.ATIVA)
                 .build();

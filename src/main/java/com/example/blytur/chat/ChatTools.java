@@ -39,19 +39,13 @@ public class ChatTools {
     @Bean
     @Description("Cria uma nova matricula com um cliente")
     public Function<MatriculaForm, Matricula> createMatricula() {
-        return request -> matriculaService.createMatricula(request.name(), request.cpf());
+        return request -> matriculaService.createMatricula(request.name(), request.cpf(), request.turbina());
     }
 
     @Bean
-    @Description("Busca a turbina pela versao")
-    public Function<TurbinaRequest, Turbina> findTurbina() {
-        return request -> turbinaService.findTurbina(request.capacidade(), request.versao());
-    }
-  
-    @Bean
     @Description("Cria turbina para o cliente")
     public Function<TurbinaForm, Turbina> createTurbina() {
-        return request -> turbinaService.createTurbina(request.capacidade(), request.versao());
+        return request -> turbinaService.createTurbina(request.versao(), request.capacidade());
     }
   
 }

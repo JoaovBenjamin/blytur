@@ -1,6 +1,7 @@
 package com.example.blytur.view;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.example.blytur.chat.ChatService;
@@ -13,6 +14,8 @@ import com.vaadin.flow.router.Route;
 
 @Route("")
 @Component
+@Scope("prototype")
+
 public class HomeView extends VerticalLayout {
 
     @Autowired
