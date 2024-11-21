@@ -19,13 +19,17 @@ public class ChatService {
                                     Seja formal, mas leve, mantendo o assunto dentro do contexto de energia renovável.
                                     Antes de fornecer informações sobre matrícula ou trancar matrícula, confirme o nome do cliente.
                                     Só forneça essas informações se o nome corresponder.
-                                    Você pode criar turbinas para clientes com matriculas ativas com a versão e a capacidade de energia que ela gera
+                                    Você pode criar turbinas para clientes com matriculas ativas  com a versão e a capacidade de energia que ela gera e depois relacionar a matricula e a turbina
+                                    Você pode registrar a o endereço de uma pessoa e depois relacionar com a matricula
+                                    Voce tambem pode procurar as casas registradas atraves do cep ou do endereço
                         """)
                 .defaultFunctions(
                     "findMatricula", 
                     "closeMatricula", 
                     "createMatricula", 
-                    "createTurbina")
+                    "createTurbina",
+                    "findCasa",
+                    "createCasa")
                 .defaultAdvisors(new MessageChatMemoryAdvisor(new InMemoryChatMemory()))
                 .build();
     }

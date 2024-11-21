@@ -7,13 +7,16 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Description;
 
+import com.example.blytur.domain.casa.Casa;
+import com.example.blytur.domain.casa.CasaForm;
+import com.example.blytur.domain.casa.CasaRequest;
+import com.example.blytur.domain.casa.CasaService;
 import com.example.blytur.domain.matricula.Matricula;
 import com.example.blytur.domain.matricula.MatriculaForm;
 import com.example.blytur.domain.matricula.MatriculaRequest;
 import com.example.blytur.domain.matricula.MatriculaService;
 import com.example.blytur.domain.turbina.Turbina;
 import com.example.blytur.domain.turbina.TurbinaForm;
-import com.example.blytur.domain.turbina.TurbinaRequest;
 import com.example.blytur.domain.turbina.TurbinaService;
 
 @Configuration
@@ -23,6 +26,8 @@ public class ChatTools {
     MatriculaService matriculaService;
     @Autowired
     TurbinaService turbinaService;
+    @Autowired
+    CasaService casaService;
 
     @Bean
     @Description("Encerrar matricula com o cliente")
@@ -46,6 +51,18 @@ public class ChatTools {
     @Description("Cria turbina para o cliente")
     public Function<TurbinaForm, Turbina> createTurbina() {
         return request -> turbinaService.createTurbina(request.versao(), request.capacidade());
+    }
+
+    @Bean
+    @Description("Cria casa de um cliente")
+    public Function<CasaForm, Casa> createCasa(){
+        return request -> casaService.createCasa(request.endereco(),request.cep(),request.matricula());
+    }
+
+    @Bean
+    @Description("Procura a localização da casa de um cliente")
+    public Function<CasaRequest, Casa> findCasa(){
+        return request -> casaService.findCasa(request.endereco(), request.cep());        
     }
   
 }
