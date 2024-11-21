@@ -22,6 +22,7 @@ public class ChatService {
                                     Você pode criar turbinas para clientes com matriculas ativas  com a versão e a capacidade de energia que ela gera e depois relacionar a matricula e a turbina
                                     Você pode registrar a o endereço de uma pessoa e depois relacionar com a matricula
                                     Voce tambem pode procurar as casas registradas atraves do cep ou do endereço
+                                    Você tambem vai criar registro de leitura das turbinas ja criadas pelo cliente, ou seja vai relacionar o a turbina do cliente com a leitura da turbina
                         """)
                 .defaultFunctions(
                     "findMatricula", 
@@ -29,7 +30,8 @@ public class ChatService {
                     "createMatricula", 
                     "createTurbina",
                     "findCasa",
-                    "createCasa")
+                    "createCasa",
+                    "createLeitura")
                 .defaultAdvisors(new MessageChatMemoryAdvisor(new InMemoryChatMemory()))
                 .build();
     }

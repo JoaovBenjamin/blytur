@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import com.example.blytur.chat.ChatService;
 import com.example.blytur.domain.casa.CasaService;
+import com.example.blytur.domain.leitura.LeituraService;
 import com.example.blytur.domain.matricula.MatriculaService;
 import com.example.blytur.domain.turbina.TurbinaService;
 import com.vaadin.flow.component.html.H1;
@@ -27,8 +28,10 @@ public class HomeView extends VerticalLayout {
     TurbinaService turbinaService1;
     @Autowired
     CasaService casaService;
+    @Autowired
+    LeituraService leituraService;
 
-    public HomeView(CasaService casaService,MatriculaService matriculaService, ChatService chatService, TurbinaService turbinaService) {
+    public HomeView(LeituraService leituraService,CasaService casaService,MatriculaService matriculaService, ChatService chatService, TurbinaService turbinaService) {
 
         add(new H1("Assistente Blytúr"));
 
@@ -37,6 +40,7 @@ public class HomeView extends VerticalLayout {
         tabSheet.add("Matrículas", new TableView(matriculaService));
         tabSheet.add("Turbina", new TurbinaView(turbinaService));
         tabSheet.add("Casa", new CasaView(casaService));
+        tabSheet.add("Leituras", new LeituraView(leituraService));
 
         tabSheet.setHeightFull();
         tabSheet.setWidthFull();
@@ -49,5 +53,6 @@ public class HomeView extends VerticalLayout {
         this.matriculaService1 = matriculaService;
         this.turbinaService1 = turbinaService;
         this.casaService = casaService;
+        this.leituraService=leituraService;
     }
 }

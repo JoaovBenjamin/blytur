@@ -1,14 +1,9 @@
 package com.example.blytur.domain.turbina;
 
-import com.example.blytur.domain.matricula.Matricula;
-
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,6 +21,6 @@ public class Turbina {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String versao;
-    String capacidade;
+    String capacidade; // Capacidade em KW
 
 }

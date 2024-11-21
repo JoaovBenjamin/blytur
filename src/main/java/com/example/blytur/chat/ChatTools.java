@@ -11,6 +11,9 @@ import com.example.blytur.domain.casa.Casa;
 import com.example.blytur.domain.casa.CasaForm;
 import com.example.blytur.domain.casa.CasaRequest;
 import com.example.blytur.domain.casa.CasaService;
+import com.example.blytur.domain.leitura.Leitura;
+import com.example.blytur.domain.leitura.LeituraForm;
+import com.example.blytur.domain.leitura.LeituraService;
 import com.example.blytur.domain.matricula.Matricula;
 import com.example.blytur.domain.matricula.MatriculaForm;
 import com.example.blytur.domain.matricula.MatriculaRequest;
@@ -28,6 +31,8 @@ public class ChatTools {
     TurbinaService turbinaService;
     @Autowired
     CasaService casaService;
+    @Autowired
+    LeituraService leituraService;
 
     @Bean
     @Description("Encerrar matricula com o cliente")
@@ -63,6 +68,12 @@ public class ChatTools {
     @Description("Procura a localização da casa de um cliente")
     public Function<CasaRequest, Casa> findCasa(){
         return request -> casaService.findCasa(request.endereco(), request.cep());        
+    }
+
+    @Bean
+    @Description("Cria a leitura da turbina relacionada ao cliente")
+    public Function <LeituraForm, Leitura> createLeitura(){
+        return request -> leituraService.createLeitura(request.turbina(), request.producao(),request.velocidadeVento());
     }
   
 }
