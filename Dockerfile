@@ -17,7 +17,7 @@ FROM openjdk:17-jdk-slim
 EXPOSE 8080
 
 # Copia o arquivo JAR gerado na etapa de build para a imagem final
-COPY --from=build /target/blytur-1-1.0.0.jar app.jar
+COPY --from=build /app/target/blytur-0.0.1-SNAPSHOT.jar app.jar
 
 # Comando de entrada para rodar o JAR
 ENTRYPOINT ["java", "-jar", "app.jar"]
