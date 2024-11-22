@@ -1,16 +1,23 @@
-FROM ubuntu:latest AS build
+# Etapa de Build
+FROM maven:3.9.4-eclipse-temurin-17 AS build
 
-RUN apt-get update
-RUN apt-get install openjdk-17-jdk -y
+# Define o diretório de trabalho dentro do container
+WORKDIR /app
+
+# Copia todos os arquivos do projeto para o container
 COPY . .
 
-RUN apt-get install maven -y
-RUN mvn clean install
+# Executa o comando de build com Maven
+RUN mvn clean install -DskipTests
 
+# Etapa Final
 FROM openjdk:17-jdk-slim
 
+# Expõe a porta 8080
 EXPOSE 8080
 
-COPY --from=build /target/blytur-1-1.0.0.jar app.jar
+# Copia o arquivo JAR gerado na etapa de build para a imagem final
+COPY --from=build /app/target/blytur-1-1.0.0.jar app.jar
 
-ENTRYPOINT [ "java", "-jar", "app.jar" ]
+# Comando de entrada para rodar o JAR
+ENTRYPOINT ["java", "-jar", "app.jar"]
