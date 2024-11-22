@@ -6,4 +6,4 @@ services:
       - 'POSTGRES_PASSWORD=${SENHA}'
       - 'POSTGRES_USER=${USER}'
     ports:
-      - '5432'
+      - ${PORT}
